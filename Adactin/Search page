@@ -1,0 +1,86 @@
+package com.Project1;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class SearchPageObjectModel {
+	static WebDriver driver;
+	
+	private static  WebElement button;
+	@FindBy(id = "location")
+	private static  WebElement place;
+	@FindBy(id = "hotels")
+	private static  WebElement hotel;
+
+	@FindBy(id = "room_type")
+	private static  WebElement room;
+	@FindBy(id = "room_nos")
+	private static  WebElement nos_room;
+	@FindBy(id = "datepick_in")
+	private static  WebElement din;
+	@FindBy(id = "datepick_out")
+	private static WebElement dout;
+	@FindBy(name = "datepick_in")
+	private static  WebElement in;
+	@FindBy(name = "datepick_out")
+	private static  WebElement out;
+	@FindBy(id = "adult_room")
+	private static  WebElement a_room;
+	@FindBy(id = "child_room")
+	private static  WebElement c_room;
+	@FindBy(id = "Submit")
+	private static  WebElement submit;
+	public static WebElement getButton() {
+		return button;
+	}
+
+	public WebElement getPlace() {
+		return place;
+	}
+
+	public WebElement getHotel() {
+		return hotel;
+	}
+
+	public  WebElement getRoom() {
+		return room;
+	}
+
+	public  WebElement getNos_room() {
+		return nos_room;
+	}
+
+	public  WebElement getDin() {
+		return din;
+	}
+
+	public  WebElement getDout() {
+		return dout;
+	}
+
+	public  WebElement getIn() {
+		return in;
+	}
+
+	public   WebElement getOut() {
+		return out;
+	}
+
+	public  WebElement getA_room() {
+		return a_room;
+	}
+
+	public  WebElement getC_room() {
+		return c_room;
+	}
+
+	public  WebElement getSubmit() {
+		return submit;
+	}
+	public SearchPageObjectModel(WebDriver driver2) {
+		this.driver=driver2;
+		PageFactory.initElements(driver, this);
+	}
+}
