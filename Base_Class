@@ -1,0 +1,114 @@
+package com.mavenproject.project2;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.Driver;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.Select;
+
+public class Base_Class {
+ static WebDriver driver;
+	
+	public static void launch() {
+		
+			
+		System.setProperty("webdriver.chrome.driver", 
+				"C:\\Users\\PRABHAKAR S\\eclipse-workspace4\\project2\\CD\\chromedriver.exe");
+		driver =new ChromeDriver();
+		
+	}
+	public static void max() {
+		driver.manage().window().maximize();
+
+	}
+       public static void setpro(String gg) {
+				driver.get(gg);
+			}
+       public static void input(WebElement value,String ab) {
+    	   value.sendKeys(ab);
+		
+	}
+       public static void click(WebElement gh) {
+    	   gh.click();
+	}
+
+       
+       public static void navigate(String url) {
+		driver.navigate().to(url);
+	}
+       public static void navi_back() {
+		driver.navigate().back();
+	}
+       public static void refresh() {
+		driver.navigate().refresh();
+		
+	}
+       public static void clear(WebElement web) {
+        web.clear();
+	}
+       public static void handle(WebElement value) {
+		Actions ref =new Actions(driver);
+		ref.contextClick(value).click();
+	
+	}public static void dropdown(WebElement webe,String value,String v) {
+		Select s = new Select(webe);
+		if(value.equalsIgnoreCase("by index")) {
+			int index = Integer.parseInt(v);
+			s.selectByIndex(index);
+		}else if (value.equalsIgnoreCase("by value")) {
+			s.selectByValue(v);	
+		} else if (value.equalsIgnoreCase("by text")) {
+		    s.selectByVisibleText(v);	
+		}
+
+	}
+       public static void screenshot() throws Exception {
+    	   TakesScreenshot ts = (TakesScreenshot) driver;
+		    File source= ts.getScreenshotAs(OutputType.FILE);
+		    File destination = new File("C:\\Users\\PRABHAKAR S\\eclipse-workspace4\\project2\\screenshot\\name.png");
+		    FileHandler.copy(source, destination);
+		    
+	}public static void alert(WebElement we,String v,String b) {
+		if (v.equalsIgnoreCase("accept")) {
+		    we.click();
+		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		    driver.switchTo().alert().accept();
+		}else if (v.equalsIgnoreCase("dismiss")) {
+			 we.click();
+			    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			    driver.switchTo().alert().dismiss();
+		}else if (v.equalsIgnoreCase("textbox accept")) {
+			we.click();
+			driver.switchTo().alert().sendKeys(b);
+			driver.switchTo().alert().accept();
+		}else if (v.equalsIgnoreCase("textbox dismiss")) {
+			we.click();
+			driver.switchTo().alert().sendKeys(b);
+			driver.switchTo().alert().dismiss();
+		}
+	}public static void enable(WebElement we,boolean b) {
+		b=we.isEnabled();
+		System.out.println(b);
+
+	}public static void display(WebElement we,boolean b) {
+		b=we.isDisplayed();
+		System.out.println(b);
+
+	}public static void selected(WebElement we,boolean b) {
+		b=we.isSelected();
+		System.out.println(b);
+
+	}public static void waiting() {
+		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+
+	}
+}
