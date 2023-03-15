@@ -1,0 +1,46 @@
+package com.Project1;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public class Adactin_Page_Object_Manager {
+	public static WebDriver driver;
+private static LoginPageOBjectModel Lppm;
+
+private static SearchPageObjectModel spm;
+private static ConfirmPageObjectModel cpm;
+private static DetailsPageObjectModel dpm;
+private static booking_ConfirmedPageObjectModel bcpm;
+
+public static LoginPageOBjectModel getLppm() {
+	LoginPageOBjectModel java = new LoginPageOBjectModel(driver); 
+	return Lppm;
+}
+
+
+public static SearchPageObjectModel getSpm() {
+	SearchPageObjectModel search = new SearchPageObjectModel(driver);
+	return spm;
+}
+public static ConfirmPageObjectModel getCpm() {
+	ConfirmPageObjectModel conf=new ConfirmPageObjectModel(driver);
+	return cpm;
+}
+public static DetailsPageObjectModel getDpm() {
+	DetailsPageObjectModel de =new DetailsPageObjectModel(driver);
+	return dpm;
+}
+public static booking_ConfirmedPageObjectModel getBcpm() {
+	booking_ConfirmedPageObjectModel bc= new booking_ConfirmedPageObjectModel(driver);
+	return bcpm;
+}
+//public Adactin_Page_Object_Manager(WebDriver driver1) {
+//	this.driver = driver1;
+//	PageFactory.initElements(driver, this);
+//}
+public Adactin_Page_Object_Manager(WebDriver driver1) {
+	this.driver = driver1;
+	PageFactory.initElements(driver, this);
+}
+}
+
