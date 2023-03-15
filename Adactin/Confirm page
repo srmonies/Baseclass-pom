@@ -1,0 +1,29 @@
+package com.Project1;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class ConfirmPageObjectModel {
+	static WebDriver driver;
+
+	 @FindBy(name = "radiobutton_0")
+	 private static WebElement r_button;
+	
+	@FindBy(name = "continue")
+	 private static WebElement cont_button;
+	
+	
+	
+	public  WebElement getR_button() {
+			return r_button;
+		}
+		public WebElement getCont_button() {
+			return cont_button;
+		}
+		 public ConfirmPageObjectModel(WebDriver driver3) {
+				this.driver=driver3;
+				PageFactory.initElements(driver, this);
+			}
+}
